@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light Mode: Polished Silver & Slate */
+  --background: #f8fafc;
+  /* slate-50 */
+  --foreground: #0f172a;
+  /* slate-900 */
+
+  /* Metallic Variable System (HSL for better blending) */
+  --metal-foreground: 215 205 12%;
+  /* Deep slate-charcoal  */
+  --metal-lustre: 215 25% 27%;
+  /* slate-800 */
+  --metal-border: 214 32% 91%;
+  /* slate-200 */
+  --metal-shine: 215 16% 45%;
+  /* The shine */
+
+  /* The "Marrow" Accent: Raw Iron/Graphite */
+  --accent-mineral: 220 9% 46%;
+  /* grey-500 */
+}
+
+.dark {
+  /* Dark Mode: Deepslate & Titanium */
+  --background: #09090b;
+  /* zinc-950 - slightly warmer than pure black */
+  --foreground: #fafafa;
+  /* zinc-50 */
+
+  --metal-foreground: 215 15% 92%;
+ /* Off-white "Titanium" for Dark Mode */
+  --metal-lustre: 240 5% 84%;
+  /* zinc-200 (The 'Shine') */
+  --metal-border: 240 6% 15%;
+  /* zinc-900 */
+  --metal-shine: 215 10% 65%;
+
+  /* The "Marrow" Accent: Crystalline Steel */
+  --accent-mineral: 215 20% 65%;
+  /* slate-400 */
+
+  /* Custom Metallic Gradient for dark mode surfaces */
+  --metal-gradient: linear-gradient(145deg,
+      rgba(39, 39, 42, 0.5) 0%,
+      rgba(9, 9, 11, 0) 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-metal-border: var(--metal-border);
+  --color-metal-shine: var(--metal-lustre);
+  --font-sans: var(--font-inter-sans);
+  --font-display: var(--font-manrope);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Apply a very subtle grain/texture look if desired */
+  background-attachment: fixed;
+}
+
+/* --- Premium Metallic Utilities --- */
+
+@layer utilities {
+
+  /* The bright "Spotlight" reflection (Top Left) */
+  .glass-capsule-solid::before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 25%;
+    background: radial-gradient(
+      ellipse at center, 
+      rgba(255, 255, 255, 0.35) 0%, 
+      rgba(255, 255, 255, 0) 80%
+    );
+    border-radius: 50%;
+    filter: blur(3px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .tracking-engineered {
+    letter-spacing: -0.8rem;
+  }
+
+  .text-reveal-light {
+    /* The core of the 'System' aesthetic */
+    @apply bg-clip-text text-transparent bg-gradient-to-b;
+    padding-bottom: 0.1em; 
+    margin-bottom: -0.1em;
+    /* LIGHT MODE: From deep slate to a faded mid-gray */
+    background-image: linear-gradient(
+      to bottom,
+      #000000 20%, 
+      rgba(18, 23, 33, 0.6) 100%
+    );
+  }
+
+  .dark .text-reveal-light {
+    /* DARK MODE: From pure white/zinc to a faded titanium gray */
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff 30%,
+      rgba(49, 52, 61, 0.4) 100%
+    );
+  }
+
+  /* The "Titanium" Text Look */
+  .text-premium-metal {
+    @apply text-zinc-500 dark:text-zinc-300 transition-colors duration-500;
+  }
+
+  /* A lustrous border that looks like a chamfered edge */
+  .border-metallic {
+    border: 1px solid var(--metal-border);
+    background: var(--metal-gradient);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Animated Shine for the FlipText */
+  .shine-effect {
+    @apply bg-clip-text text-transparent bg-gradient-to-b;
+    /* Light Mode Gradient */
+    background-image: linear-gradient(
+      to bottom, 
+      hsl(var(--metal-foreground)) 30%, 
+      hsl(var(--metal-shine)) 100%
+    );
+  }
+
+  .dark .shine-effect {
+    /* Dark Mode Gradient */
+    background-image: linear-gradient(
+      to bottom, 
+      hsl(var(--metal-foreground)) 40%, 
+      hsl(var(--metal-shine)) 100%
+    );
+  }
+}
+
+@keyframes metal-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* --- Refined FlipText Animations --- */
+
+.flip-char {
+  height: 1.2em;
+  line-height: 1.2em;
+  vertical-align: middle;
+  perspective: 1000px;
+  /* Crucial for that "Engineered" 3D depth */
+}
+
+.flip-char::before,
+.flip-char::after {
+  content: attr(data-char);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+}
+
+/* Update your transition for the flip to feel more mechanical */
+@keyframes flip {
+
+  0%,
+  10% {
+    transform: rotateX(0deg);
+  }
+
+  40%,
+  60% {
+    transform: rotateX(90deg);
+  }
+
+  90%,
+  100% {
+    transform: rotateX(0deg);
+  }
+}
