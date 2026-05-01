@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Using the optimized "Solidly" set to prevent layout shifting
 const words = ["to the Core", "for Scale", "Precisely", "Solidly"];
 
-export default function HeroFlip() {
+export default function WordFlip() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

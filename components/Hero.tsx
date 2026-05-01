@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motio
 import { BorderBeam } from "@/components/ui/border-beam";
 import AnimatedButton from "@/components/ui/animated-button";
 import { Background } from "@/components/ui/background";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/ui/badge";
 
 const WORDS = ["to the Core", "for Scale", "Precisely", "Solidly"];
 
