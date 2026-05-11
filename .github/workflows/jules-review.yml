@@ -45,3 +45,18 @@ jobs:
         if: success()
         run: |
           echo "Jules review complete. If Jules suggested code changes for documentation, please approve his suggested commits."
+
+
+          - name: Jules Deep System Audit
+        uses: samarth/jules-pr-reviewer@v1
+        with:
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} # <--- ADD THIS LINE
+          rules_file: ".github/AGENTS.md"
+          extra_instructions: |
+            1. Perform a deep logic audit of this PR. 
+            2. If new components or systems are detected, you MUST generate a technical specification file in `./docs/`.
+            3. Use Mermaid.js syntax for all architecture diagrams as per our AGENTS.md template.
+            4. If existing features are modified, update the corresponding file in `./docs/` or the local block's Readme.md.
+            5. Audit for Web3 security: Check for MEV-resistance and Solana/SVM performance bottlenecks.
+            6. Flag findings with severity tags: [BLOCKING], [WARN], or [NIT].
