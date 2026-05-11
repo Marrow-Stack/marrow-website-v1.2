@@ -16,10 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-    concurrency:
-      group: jules-review-${{ github.event.pull_request.number || github.run_id }}
-      cancel-in-progress: true
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -27,15 +23,15 @@ jobs:
           fetch-depth: 0
 
       - name: Jules Deep System Audit
-        uses: SamartShukla17/jules-pr-reviewer@v1
+        # Using the verified community action since your custom one isn't live yet
+        uses: sanjay3290/jules-pr-reviewer@v1 
         with:
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          rules_file: ".github/AGENTS.md"
+          rules_file: "AGENTS.md"
           extra_instructions: |
-            1. Perform a deep logic audit of this PR. 
-            2. If new components or systems are detected, you MUST generate a technical specification file in `./docs/`.
-            3. Use Mermaid.js syntax for all architecture diagrams as per our AGENTS.md template.
-            4. If existing features are modified, update the corresponding file in `./docs/` or the local block's Readme.md.
-            5. Audit for Web3 security: Check for MEV-resistance and Solana/SVM performance bottlenecks.
-            6. Flag findings with severity tags: [BLOCKING], [WARN], or [NIT].
+            1. Analyze the 'Blocks' registry and tactile UI primitives (magnetic buttons, etc.).
+            2. If new components are added, create/update documentation in the './docs/' folder.
+            3. Use the Mermaid.js template from AGENTS.md for architecture visuals.
+            4. Ensure Tailwind 4 and React 19 standards are met.
+            5. Audit for Bun-specific performance optimizations.
