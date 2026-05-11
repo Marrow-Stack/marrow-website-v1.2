@@ -1,0 +1,37 @@
+name: Jules Agent Trigger
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  jules-work:
+    # Only run if the label added is exactly "jules"
+    if: github.event.label.name == 'jules'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Invoke Jules Agent
+        uses: google-labs-code/jules-invoke@v1
+        with:
+          # This sends the Issue Title and Body to Jules as context
+          prompt: |
+            Task: ${{ github.event.issue.title }}
+            Context: ${{ github.event.issue.body }}
+            
+            Standards: Refer to AGENTS.md for our HSL metallic tokens and Bun-runtime requirements.
+            Action: Propose a fix via a Pull Request to the main branch.
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+
+      - name: Add Confirmation Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🤖 **Jules is on it.** I've dispatched the task to the agent. Check back shortly for a PR or analysis."
+            })
