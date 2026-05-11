@@ -1,27 +1,30 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Boxes, BookOpen, Search, Sun, Moon } from "lucide-react";
+import { Boxes, BookOpen, Search, Sun, Moon, type LucideIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
 
 // Navigation configuration
-const LEFT_ITEMS = [
-  { name: "Blocks", icon: Boxes, href: "/blocks" },
-  { name: "Docs", icon: BookOpen, href: "/docs" },
+type DockItem = {
+  name: string;
+  icon: LucideIcon;
+  href: string;
+};
+
+const LEFT_ITEMS: DockItem[] = [
+  { name: "Blocks", icon: Boxes, href: "/" },
+  { name: "Docs", icon: BookOpen, href: "/" },
 ];
 
 export const RefractiveDock = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Handle Hydration and Keyboard Shortcuts
+  // Handle Keyboard Shortcuts
   useEffect(() => {
-    setMounted(true);
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -48,7 +51,7 @@ export const RefractiveDock = () => {
 
       {/* Center Section: Adaptive Logo */}
       <div className="flex items-center justify-center flex-1 px-4">
-        {mounted && <Logo theme={theme} />}
+        <Logo theme={resolvedTheme ?? theme} />
       </div>
 
       {/* Right Section: Search & Theme Toggle */}
@@ -105,7 +108,7 @@ const Logo = ({ theme }: { theme?: string }) => {
 };
 
 // Internal Sub-component: DockIcon
-function DockIcon({ item }: { item: any }) {
+function DockIcon({ item }: { item: DockItem }) {
   return (
     <Link href={item.href}>
       <motion.div

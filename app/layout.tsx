@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { RefractiveDock } from "@/components/navbar";
 import { Background } from "@/components/ui/background";
 
 const geistSans = Geist({
@@ -26,27 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body 
-        className="font-sans {`${GeistSans.variable} ${Geist_Mono.variable} antialiased`}"
-      >
-        
-        <ThemeProvider 
-          attribute="class" 
-          defaultTheme="system" 
-          enableSystem 
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
           <Background className="fixed inset-0 z-0 pointer-events-none" />
-          {/* <RefractiveDock /> */}
-          
           <main className="bg-background text-foreground">
             {children}
-    
           </main>
         </ThemeProvider>
       </body>
-
     </html>
   );
 }

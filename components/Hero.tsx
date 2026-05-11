@@ -1,22 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { BorderBeam } from "@/components/ui/border-beam";
 import AnimatedButton from "@/components/ui/animated-button";
-import { Background } from "@/components/ui/background";
 import { Badge } from "@/components/ui/badge";
 
 const WORDS = ["to the Core", "for Scale", "Precisely", "Solidly"];
 
 export const HeroSection = () => {
     const [index, setIndex] = useState(0);
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    const springConfig = { damping: 50, stiffness: 100 };
-    const parallaxX = useSpring(mouseX, springConfig);
-    const parallaxY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -25,21 +18,8 @@ export const HeroSection = () => {
         return () => clearInterval(timer);
     }, []);
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        mouseX.set(e.clientX - centerX);
-        mouseY.set(e.clientY - centerY);
-    };
-
     return (
-        <section
-            className="relative min-h-screen w-full overflow-hidden bg-background transition-colors duration-500"
-            onMouseMove={handleMouseMove}
-        >
-            <Background className="z-0" />
-
+        <section className="relative min-h-screen w-full overflow-hidden bg-background transition-colors duration-500">
             <div className="relative z-10 container mx-auto px-4 min-h-screen flex items-center justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -128,7 +108,7 @@ export const HeroSection = () => {
                         transition={{ duration: 0.8, delay: 0.7, ease: [0.23, 1, 0.32, 1] }}
                         className="flex justify-center mt-2"
                     >
-                        <Link href="/docs/components-overview">
+                        <Link href="/">
                             <AnimatedButton className="text-sm px-8 py-4 cursor-pointer">
                                 Browse Components
                             </AnimatedButton>
@@ -139,4 +119,3 @@ export const HeroSection = () => {
         </section>
     );
 };
-
