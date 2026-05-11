@@ -2,36 +2,26 @@ name: Jules Deep Review & DocGen
 
 on:
   pull_request:
-    types: [opened, synchronize, ready_for_review]
-  workflow_dispatch:
+    types: [opened, synchronize] # Only use events the Action actually supports
 
 permissions:
   contents: write
   pull-requests: write
-  statuses: write
 
 jobs:
   jules-review:
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Jules Deep System Audit
-        # Using the verified community action since your custom one isn't live yet
-        uses: sanjay3290/jules-pr-reviewer@v1 
+        uses: sanjay3290/jules-pr-reviewer@v1
         with:
           jules_api_key: ${{ secrets.JULES_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           rules_file: "AGENTS.md"
           extra_instructions: |
-            1. Analyze the 'Blocks' registry and tactile UI primitives (magnetic buttons, etc.).
-            2. If new components are added, create/update documentation in the './docs/' folder.
-            3. Use the Mermaid.js template from AGENTS.md for architecture visuals.
-            4. Ensure Tailwind 4 and React 19 standards are met.
-            5. Audit for Bun-specific performance optimizations.
+            1. Audit tactile UI components and HSL color usage.
+            2. Generate architecture diagrams in ./docs/ using Mermaid.js.
+            3. Verify Bun/React 19 compatibility.
