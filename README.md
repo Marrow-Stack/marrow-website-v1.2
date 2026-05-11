@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marrow
+
+Marrow is a curated collection of high-performance and beautifully engineered UI blocks, designed for scale and precision. Built with a focus on "Engineered" aesthetics, it provides a set of premium components that combine modern web technologies with a refined, metallic design language.
+
+## Core Philosophy
+
+- **Engineered to the Core**: Every component is built with performance and maintainability in mind.
+- **Metallic Aesthetics**: A unique design system inspired by polished silver, titanium, and raw iron.
+- **Interactive Precision**: Smooth, high-frame-rate animations using Framer Motion and custom CSS transitions.
+- **Developer-Centric**: Easy to integrate, highly customizable, and fully type-safe.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+```
+
+Then, run the development server:
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the results.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Refractive Dock**: A glassmorphic navigation system with adaptive theme support and integrated search.
+- **Mechanical Hero Section**: A high-impact landing section featuring 3D word-flip animations and mouse-parallax effects.
+- **Metallic Theme System**: A sophisticated CSS-variable based theme system for seamless light and dark mode transitions with a "Titanium" look.
+- **Animated UI Components**: A suite of specialized components like `BorderBeam`, `AnimatedButton`, and `WordFlip`.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the specific features and how to use them, check out [FEATURES.md](./FEATURES.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)

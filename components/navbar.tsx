@@ -21,7 +21,9 @@ export const RefractiveDock = () => {
   // Handle Hydration and Keyboard Shortcuts
   useEffect(() => {
     setMounted(true);
+  }, []);
 
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
