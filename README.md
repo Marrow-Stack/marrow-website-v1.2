@@ -38,7 +38,7 @@ To learn more about the specific features and how to use them, check out [FEATUR
 
 ## Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/)
+- **Framework**: [Next.js 15](https://nextjs.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)

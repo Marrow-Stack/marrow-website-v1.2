@@ -26,11 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body 
         className="font-sans antialiased"
       >
@@ -41,7 +37,7 @@ export default function RootLayout({
           enableSystem 
           disableTransitionOnChange
         >
-          <Background className="inset-0 z-0 pointer-events-none" />
+          <Background className="fixed inset-0 z-0 pointer-events-none" />
           <RefractiveDock />
           
           <main className="bg-background text-foreground">

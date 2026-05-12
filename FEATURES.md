@@ -34,23 +34,23 @@ A comprehensive styling system that defines the Marrow "Engineered" look.
 
 ## 4. Specialized UI Components (`components/ui/`)
 
-### `border-beam.tsx`
+### `BorderBeam.tsx`
 An animated border effect that "sweeps" around a container, perfect for highlighting active elements or adding a premium touch to cards.
 
-### `animated-button.tsx`
+### `AnimatedButton.tsx`
 A high-performance button component with custom hover interactions and smooth transitions.
 
-### `background.tsx`
+### `Background.tsx`
 A versatile background component that provides a consistent canvas for the application's metallic theme.
 
-### `badge.tsx`
+### `Badge.tsx`
 A clean, informative badge component often used for announcements or status updates within the Hero section.
 
-### `word-flip.tsx`
+### `WordFlip.tsx`
 A standalone version of the 3D word flipping animation used in the Hero section, optimized to prevent layout shifts.
 
 ## Technical Details
 
 - **Tailwind CSS 4**: Utilizes the latest Tailwind features, including `@theme inline` and custom variants.
 - **Framer Motion**: Leveraged for complex 3D transitions and spring-based physics.
-- **Next.js 16 App Router**: Optimized for the latest React patterns and performance.
+- **Next.js 15 App Router**: Optimized for the latest React patterns and performance.
