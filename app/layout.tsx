@@ -34,7 +34,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Background className="fixed inset-0 z-0 pointer-events-none" />
-          <main className="bg-background text-foreground">
+          <main className="relative z-10 bg-background text-foreground">
             {children}
           </main>
         </ThemeProvider>
