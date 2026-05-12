@@ -53,5 +53,4 @@ A standalone version of the 3D word flipping animation used in the Hero section,
 
 - **Tailwind CSS 4**: Utilizes the latest Tailwind features, including `@theme inline` and custom variants.
 - **Framer Motion**: Leveraged for complex 3D transitions and spring-based physics.
-- **Next.js 16 App Router**: Optimized for the latest React patterns and performance.
-- **Global Background Layer**: `Background` is rendered once in `app/layout.tsx`; individual pages should avoid rendering additional background instances.
+- **Next.js 15 App Router**: Optimized for the latest React patterns and performance.
