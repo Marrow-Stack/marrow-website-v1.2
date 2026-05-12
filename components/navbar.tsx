@@ -19,7 +19,8 @@ const LEFT_ITEMS: DockItem[] = [
 ];
 
 export const RefractiveDock = () => {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme: selectedTheme, setTheme, resolvedTheme } = useTheme();
+  const theme = resolvedTheme ?? selectedTheme ?? "light";
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
