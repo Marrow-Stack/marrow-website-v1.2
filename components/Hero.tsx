@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BorderBeam } from "@/components/ui/border-beam";
 import AnimatedButton from "@/components/ui/animated-button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "./ui/magnetic-button";
 
 const WORDS = ["to the Core", "for Scale", "Precisely", "Solidly"];
 
